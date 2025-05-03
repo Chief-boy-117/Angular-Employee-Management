@@ -1,0 +1,39 @@
+<p>Roles works!</p>
+
+<div class="row">
+    <div class="col-3">
+        <p>First Name: {{firstName}}</p>
+    </div>
+    <div class="col-3">
+        <p>Angular Version: {{angularVersion + version}}</p>
+    </div>
+    <div class="col-3">
+        <p>Active Status: {{isActive ? "Active" : "Inactive"}}</p>
+    </div>
+    <div class="col-3">
+        <p>Current Date: {{currentDate}}</p>
+    </div>
+    <div class="col-3">
+        <p>Selected State: {{selectedState}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="firstName" class="form-control" />
+    </div>
+    <div class="col-3">
+        <input [type]="inputType" [value]="isActive" />
+    </div>
+    <div class="col-3">
+        <select [(ngModel)]="selectedState">
+            <option value="MH">Maharastra</option>
+            <option value="MP">Madhya Pradesh</option>
+            <option value="GO">Goa</option>
+        </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="greetUser()">Show alert</button>
+    </div>
+</div>
