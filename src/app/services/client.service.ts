@@ -22,6 +22,6 @@ export class ClientService {
   }
 
   deleteClientById(id: number): Observable<APIResponseModel> {
-    return this.http.get<APIResponseModel>(this.rootPath + "DeleteClientByClientId?clientId=" + id);
+    return this.http.delete<APIResponseModel>(this.rootPath + "DeleteClientByClientId?clientId=" + id);
   }
 }
