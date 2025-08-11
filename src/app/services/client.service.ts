@@ -17,11 +17,19 @@ export class ClientService {
     return this.http.get<APIResponseModel>(this.rootPath + "GetAllClients");
   }
 
-  addUpdate(req: Client): Observable<APIResponseModel> {
-    return this.http.post<APIResponseModel>(this.rootPath + "AddUpdateClient", req);
+  getAllEmployee(): Observable<APIResponseModel> {
+    return this.http.get<APIResponseModel>(this.rootPath + "GetAllEmployee");
+  }
+
+  addUpdate(obj: Client): Observable<APIResponseModel> {
+    return this.http.post<APIResponseModel>(this.rootPath + "AddUpdateClient", obj);
   }
 
   deleteClientById(id: number): Observable<APIResponseModel> {
     return this.http.delete<APIResponseModel>(this.rootPath + "DeleteClientByClientId?clientId=" + id);
+  }
+
+  addUpdateClientProject(obj: Client): Observable<APIResponseModel> {
+    return this.http.post<APIResponseModel>(this.rootPath + "AddUpdateClientProject", obj);
   }
 }

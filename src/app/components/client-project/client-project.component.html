@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success">
+                Client List
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>Company Name</th>
+                                    <th>Person Name</th>
+                                    <th>Contact No</th>
+                                    <th>City</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success">
+                New Client
+            </div>
+            <div class="card-body">
+                <form [formGroup]="projectForm">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Project Name</label>
+                            <input type="text" formControlName="projectName" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Start Date</label>
+                            <input type="date" formControlName="startDate" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Expected End Date</label>
+                            <input type="date" formControlName="expectedEndDate" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Contact Name</label>
+                            <input type="text" formControlName="contactPerson" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Contact Mobile</label>
+                            <input type="number" formControlName="contactPersonContactNo" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Contact Email</label>
+                            <input type="email" formControlName="contactPersonEmailId" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Total Employee Count</label>
+                            <input type="number" formControlName="totalEmpWorking" class="form-control">
+                        </div>
+                        <div class="col-6">
+                            <label for="">Project costing</label>
+                            <input type="number" formControlName="projectCost" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <label for="">Project Description</label>
+                            <textarea formControlName="projectDetails" class="form-control"></textarea>
+                        </div>
+                        <div class="col-6">
+                            <label for="">Client</label>
+                            <select formControlName="clientId" class="form-control">
+                                <option value="" selected>Select Client</option>
+                                @for (item of clientList; track $index) {
+                                <option [value]="item.clientId">{{item.companyName}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="">Lead By</label>
+                            <select formControlName="leadByEmpId" class="form-control">
+                                <option value="" selected>Select Employee</option>
+                                @for (item of employeeList; track $index) {
+                                <option [value]="item.empId">{{item.empName}} - {{item.empId}}</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-6 text-center">
+                            <button class="btn btn-secondary">
+                                Reset
+                            </button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button class="btn btn-success" (click)="onSaveProject()">
+                                Save Project
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
