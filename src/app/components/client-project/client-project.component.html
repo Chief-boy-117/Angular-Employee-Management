@@ -2,7 +2,8 @@
     <div class="col-8">
         <div class="card">
             <div class="card-header bg-success">
-                Client List
+                Client List - {{firstName()}}
+                <button class="btn btn-secondary btn-sm float-end" (click)="changeFname()">Change Name</button>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -19,7 +20,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                                @for (item of projectList(); track $index) {
+                                <tr>
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{item.projectName}}</td>
+                                    <td>{{item.empName}}</td>
+                                    <td>{{item.empEmailId}}</td>
+                                    <td>{{item.startDate | date: 'dd/MMM/yyyy'}}</td>
+                                    <td>
+                                        <button class="btn btn-primary">Edit</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -38,6 +51,16 @@
                         <div class="col-6">
                             <label for="">Project Name</label>
                             <input type="text" formControlName="projectName" class="form-control">
+                            @if (projectForm.controls['projectName'].touched) {
+                            <div class="text-danger">
+                                @if (projectForm.controls['projectName'].errors?.['required']) {
+                                <div>Project Name is required</div>
+                                }
+                                @if (projectForm.controls['projectName'].errors?.['minlength']) {
+                                <div>Project Name must be at least 4 characters long</div>
+                                }
+                            </div>
+                            }
                         </div>
                         <div class="col-6">
                             <label for="">Start Date</label>
@@ -97,7 +120,7 @@
                             </button>
                         </div>
                         <div class="col-6 text-center">
-                            <button class="btn btn-success" (click)="onSaveProject()">
+                            <button class="btn btn-success" (click)="onSaveProject()" [disabled]="projectForm.invalid">
                                 Save Project
                             </button>
                         </div>
