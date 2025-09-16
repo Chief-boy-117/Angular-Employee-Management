@@ -5,10 +5,12 @@ import { ClientService } from '../../services/client.service';
 import { APIResponseModel } from '../../model/interface/role';
 import { AsyncPipe, DatePipe, JsonPipe, UpperCasePipe } from '@angular/common';
 import { Observable } from 'rxjs';
+import { AlertComponent } from "../../common/alert/alert.component";
+import { SubmitButtonComponent } from "../../common/submit-button/submit-button.component";
 
 @Component({
   selector: 'app-client',
-  imports: [FormsModule, UpperCasePipe, DatePipe, AsyncPipe, JsonPipe],
+  imports: [FormsModule, UpperCasePipe, DatePipe, AsyncPipe, JsonPipe, AlertComponent, SubmitButtonComponent],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })

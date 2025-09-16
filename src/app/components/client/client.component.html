@@ -4,6 +4,7 @@
     <li>{{item.username}}</li>
     }
 </ul>
+<app-alert [alertType]="'success'" [alertMessage]="'Client Component!'"></app-alert>
 <div class="row">
     <div class="col-8">
         <div class="card">
@@ -118,9 +119,13 @@
                             </button>
                         </div>
                         <div class="col-6 text-center">
-                            <button class="btn btn-success" (click)="onSaveClient()" [disabled]="!form.valid">
+                            <app-submit-button [buttonClass]="'btn btn-success'"
+                                [buttonText]="clientObj.clientId != 0 ? 'Update' : 'Save'"
+                                (onBtnClick)="onSaveClient()"
+                            />
+                            <!-- <button class="btn btn-success" (click)="onSaveClient()" [disabled]="!form.valid">
                                 {{clientObj.clientId != 0 ? "Update" : "Save"}}
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </form>
